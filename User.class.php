@@ -5,7 +5,6 @@ class User {
     var $email;
     var $nickname;
     var $password;
-    //var $password_salt;
     var $firstname;
     var $lastname;
 

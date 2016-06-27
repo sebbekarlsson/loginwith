@@ -1,17 +1,5 @@
 <?php
 
-/* Currently not being used.
-function get_new_salt($length=200) {
-    $salt = '';
-    $str = 'abcdefghijklmnopqrstuvwxyz{}<>$';
-    for($i = 0; $i < $length; $i++) {
-        $salt .= $str[rand(0, strlen($str)-1)];
-    }
-
-    return $salt;
-}
- */
-
 /**
  * This function is used to register a new user.
  *
@@ -22,15 +10,12 @@ function get_new_salt($length=200) {
  * @param $password - String
  */
 function register_user($email, $nickname, $firstname, $lastname, $password) {
-    //$password_salt = get_new_salt();
-
     $user = new User();
     $user->email = $email;
     $user->nickname = $nickname;
     $user->firstname = $firstname;
     $user->lastname = $lastname;
     $user->password = crypt($password);
-    //$user->password_salt = $password_salt;
 
     return $user->update();
 }
