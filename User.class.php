@@ -5,13 +5,14 @@ class User {
     var $email;
     var $nickname;
     var $password;
+    var $password_salt;
     var $firstname;
     var $lastname;
 
     function __construct($id=null) {
         global $db;
 
-        $this->id = id;
+        $this->id = $id;
 
         if ($id != null) {
             $q = $db->prepare('
@@ -49,7 +50,7 @@ class User {
                 `lastname`
                 )
                 VALUES
-                (?, ?, ? ,? ,?)
+                (?, ?, ? ,?, ? ,?)
             ');
             $resp = $q->execute(
                 [
