@@ -5,5 +5,6 @@ CREATE TABLE `users` {
     `firstname` VARCHAR(256) NOT NULL,
     `lastname` VARCHAR(256) NOT NULL,
     `password` VARCHAR(256) NOT NULL,
+    /*`password_salt` VARCHAR(256) NOT NULL,*/
     `time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 };

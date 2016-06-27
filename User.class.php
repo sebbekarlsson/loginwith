@@ -5,6 +5,7 @@ class User {
     var $email;
     var $nickname;
     var $password;
+    //var $password_salt;
     var $firstname;
     var $lastname;
 
@@ -23,6 +24,7 @@ class User {
             $this->email = $row['email'];
             $this->nickname = $row['nickname'];
             $this->password = $row['password'];
+            $this->password_salt = $row['password_salt'];
             $this->firstname = $row['firstname'];
             $this->lastname = $row['lastname'];
         }
@@ -43,6 +45,7 @@ class User {
                 `email`,
                 `nickname`,
                 `password`,
+                `password_salt`,
                 `firstname`,
                 `lastname`
                 )
@@ -54,12 +57,18 @@ class User {
                     $this->email,
                     $this->nickname,
                     $this->password,
+                    $this->password_salt,
                     $this->firstname,
                     $this->lastname
                 ]
             );
 
-            return $resp;
+            if (!empty($resp)) {
+                return $db->lastInsertId();
+            } else {
+                return false;
+            }
+
         } else {
             /* The current user-object already exists, so we will
              * only update it.
@@ -85,6 +94,10 @@ class User {
                     $this->id
                 ]
             );
+
+            if (!empty($resp)) {
+                return false;
+            }
 
             return $resp; 
         }
