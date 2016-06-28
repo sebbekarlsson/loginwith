@@ -4,6 +4,17 @@
 ### Why?
 > I just felt like I needed some more PHP code on this account.
 
+### Config
+> To use this, you need a config.json file next to the load.php file.
+> Below is an example of a config.json file:
+
+        {
+            "mysql_host": "localhost",
+            "mysql_dbname": "loginwith",
+            "mysql_username": "johndoe",
+            "mysql_password": "strongpassyo"
+        }
+
 ### Example
         
         /* Including the required files */
