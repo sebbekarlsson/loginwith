@@ -18,8 +18,12 @@ class User {
             $q = $db->prepare('
                 SELECT * FROM `users` WHERE `id`=? 
             ');
-            $q->execute($id);
+            $q->execute([$id]);
             $row = $q->fetch();
+
+            if (empty($row)) {
+                $this->id = null;
+            }
 
             $this->email = $row['email'];
             $this->nickname = $row['nickname'];
