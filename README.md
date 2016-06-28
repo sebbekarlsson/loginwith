@@ -5,6 +5,9 @@
 > I just felt like I needed some more PHP code on this account.
 
 ### Example
+        
+        /* Including the required files */
+        require_once 'LoginWith/load.php';
 
         /* If successful, it will return the id of the new user. */
         $register = register_user(
