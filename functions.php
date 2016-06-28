@@ -36,7 +36,7 @@ function get_user_by_nickname($nickname) {
     if (empty($row)) {
         return null;
     }
-    
+
     $user = new User($row['id']);
 
     if ($user->id == null) {
@@ -99,8 +99,18 @@ function login($user, $input_password) {
             $user->password
         )
     ) {
+        $_SESSION['user_id'] = $user->id;
         return true;
     }
 
     return false;
+}
+
+/**
+ * This function is used to logout.
+ *
+ * @return void
+ */
+function logout() {
+    unset($_SESSION['user_id']);
 }
